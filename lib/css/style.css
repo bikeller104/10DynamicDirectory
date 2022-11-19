@@ -1,0 +1,51 @@
+.header {
+    background-color: red;
+    display: flex;
+    justify-content: space-around;
+}
+
+.gridContainer{
+    display:grid;
+    grid-template-columns: 25% 50% 25%;
+}
+
+.card {
+    color: lightgray;
+}
+
+.card-title
+{
+    color: lightgoldenrodyellow;
+    margin:0;
+    padding: 0;
+}
+
+.card-subtitle{
+    margin:0;
+}
+
+
+.employee-header{
+    background-color: aqua;
+    margin: 0;
+    padding: 0;
+}
+/*this class affects the entire employee card*/
+.employee-container {
+    background-color: rgb(143, 143, 185);
+    margin: 5px;
+}
+
+.employee-content > p {
+    margin: .5rem;
+}
+
+#centerContent {
+    grid-column: 2;
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+
+
