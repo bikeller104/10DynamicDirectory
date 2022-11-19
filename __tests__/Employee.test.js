@@ -37,7 +37,7 @@ describe('Employee', () => {
         });
     });
     describe("getEmail", ()=>{
-        it("should return the name, id, and email entered in the constructor when initialized", ()=>{
+        it("should return the email entered in the constructor when initialized", ()=>{
             const name = "Fred";
             const id = 55;
             const email = "genericEmail@email.com";
