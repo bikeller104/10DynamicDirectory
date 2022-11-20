@@ -17,7 +17,8 @@
 This project takes user input from the user and creates a webpage containing employee information and  which is displayed dynamically
 
 ## Visuals
-
+Video of app in use at: <br>
+https://app.castify.com/watch/538b5985-412d-486d-a2c5-67e1f50b34d1
 
 ## Installation Instructions
 clone the git repository
