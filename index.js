@@ -2,8 +2,8 @@ const Employee = require('./lib/Employee');
 const Engineer = require('./lib/Engineer');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
-
 const fs = require('fs');
+
 
 
 const inquirer = require('inquirer');
@@ -88,10 +88,7 @@ function getUserInput(prevInputs)
                 if(response.continue === "quit") 
                 {
                     //fillout http
-                    prevInputs.forEach((employee) => {
-                        console.log(typeof(employee));
-                        console.log(employee.getData());
-                    }) ;
+                    writeHtmlDocument(prevInputs);
                     return;
                 }
                 getUserInput(prevInputs);
@@ -111,6 +108,62 @@ function createRole(roleName, name, id, email, specialdata)
         default:
             return new Intern(name,id,email,specialdata);
     }
+}
+
+function writeHtmlDocument(employeeList)
+{
+    let htmlCards = employeeList.map((employee) => employeeToHtml(...employee.getData())).join(``);
+    let html = 
+    `
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../lib/css/style.css">
+    <title>Employee Directory</title>
+</head>
+<body>
+    <header class="header">
+        <h1>My Team</h1>
+    </header>
+    <main class="gridContainer">
+        <div id="sidebarLeft"></div>
+        <!--this container is the flex box container in the grid-->
+        <div id="centerContent">
+
+        ${htmlCards}
+
+        </div>
+        <div id="sidebarRight"></div>
+    </main>
+    
+</body>
+</html>`;
+
+console.log(html);
+
+let fileLocation = './dist/index.html';
+fs.writeFile(fileLocation, html, (err) => { console.log(err?err:`html writen to ${fileLocation} `)});
+
+}
+
+function employeeToHtml(name, id, email, dataName, data, role)
+{
+    return `
+<div class="employee-container">
+    <div class="employee-header">
+        <h3 class="card-title">${name}</h3>
+        <h4 class="card-subtitle">${role}</h4>
+    </div>
+    <main class="employee-content">
+        <p>id: ${id}</p>
+        <p>email: ${email}</p>
+        <p>${dataName}: ${data}</p>
+    </main>
+</div>
+    `;
 }
 
 
