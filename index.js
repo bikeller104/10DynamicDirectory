@@ -3,6 +3,8 @@ const Engineer = require('./lib/Engineer');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
 
+const fs = require('fs');
+
 
 const inquirer = require('inquirer');
 
@@ -86,6 +88,10 @@ function getUserInput(prevInputs)
                 if(response.continue === "quit") 
                 {
                     //fillout http
+                    prevInputs.forEach((employee) => {
+                        console.log(typeof(employee));
+                        console.log(employee.getData());
+                    }) ;
                     return;
                 }
                 getUserInput(prevInputs);
